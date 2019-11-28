@@ -1,4 +1,4 @@
-/**Author: Diego "Max" Rivera 
+/**
   * Main object class of minesweeper. Essentially minesweeper is a board filled with a grid of these objects.
   * Each tile object has a few boolean fields as well as an int that represents how many bombs it touches
   * Each tile can also self report wether it is on the edge of the minefield(grid) and wether or not it touches
@@ -62,9 +62,11 @@ public class TILE{
    * but for now this isn't implemented. If anyone wants to take a shot at this feel free.
    * what it should do is report the number of bombs that surround it. Anywhere from 0 to 8 possible.
    * */
+  /*
   public int reportNum(){
     return -1;
   }
+  */
   
   //right now bombs will print that they are bombs plainly. This is just for testing. Obviously in the future
   //we probably won't even need this toString method
@@ -73,7 +75,9 @@ public class TILE{
     if(ISBOMB){
       return "[B]";
     }
-    else
-      return "[0]";
+    if(hasNUM == true){
+      return "[" + this.numTouch + "]";
+    }
+    else return "[0]";
   }
 }

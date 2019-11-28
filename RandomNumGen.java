@@ -1,10 +1,15 @@
-/** Author: Diego "Max" Rivera
+/**
   * This class serves only to create a psuedo random array of unique numbers. I couldn't find a way for
   * java to directly give an array of UNIQUE random numbers with its randomnumgen so i'm using this work around
   * it uses the shuffle method from collections. It loads up an array with possible locations for the bombs, then
   * shuffles and loads the first n(num mines) into an array representing the location of the mines.
   * Right now it's best used by putting the array object returned by numGen() into what variable you want
   * */
+
+
+
+
+
 import java.util.ArrayList;
 import java.util.Collections;
 
