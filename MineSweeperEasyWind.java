@@ -6,7 +6,9 @@ import java.awt.event.ActionEvent;
 
 public class MineSweeperEasyWind extends JFrame implements ActionListener {
   private JLabel score;
-  private JButton button;
+  private JLabel time;
+  private JButton startBt;
+  private JButton resetBt;
   private JTextField textfield;
   private JButton[][] buttons =  new JButton[8][8];
   //constructor  
@@ -22,8 +24,14 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener {
     //label.setOpaque(false);
     //add(textfield);
     
-    button = new JButton("Start");
-    add(button);
+    startBt = new JButton("Start");
+    add(startBt);
+    
+    resetBt = new JButton("Reset");
+    add(resetBt);
+    
+    time = new JLabel("000");
+    add(time);
     
     //code for boxes  
     JPanel gamePan = new JPanel();
