@@ -37,12 +37,30 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener {
     gamePan.setLayout(layout);
     gamePan.setBackground(Color.GRAY);
     
+    //this part is taken from the BOARDMAKER class
+    RandomNumGen gen = new RandomNumGen(0,63,10);
+    BOARDMAKER board = new BOARDMAKER("easy");
+    board.makeBoard();
+    board.appointNum();
+    board.appointCornerNum();
+    board.appointEdgeNum();
+    
+    //this creates the board and sets values to the JButtons
     for(int i = 0;i<8;i++){
       for(int j= 0;j<8;j++){
-        buttons[i][j]=new JButton();
+        if(board.getTile(i,j).getISBOMB()== true){
+          buttons[i][j]=new JButton("BOMB");
+        }
+        else{
+          Integer num = new Integer(board.getTile(i,j).getNumTouch());
+          buttons[i][j]=new JButton(num.toString());
+
+        }
+
         buttons[i][j].setPreferredSize(new Dimension(48, 48));;
+        
         //buttons[i][j].setBackground(Color.BLACK);
-        buttons[i][j].setForeground(Color.RED);
+        buttons[i][j].setForeground(Color.WHITE);
         //buttons[i][j].setOpaque(true);
         
         gamePan.add(buttons[i][j]);
