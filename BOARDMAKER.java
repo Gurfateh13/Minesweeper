@@ -355,7 +355,10 @@ public class BOARDMAKER{
         
   }     
           
-  
+  //this returns the requested tile from the board  
+  public TILE getTile(int x, int y){
+    return BOARD[x][y];
+  }
   
   
   
