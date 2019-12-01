@@ -208,18 +208,18 @@ public class BOARDMAKER{
       if(fourth_corner_tile.ISBOMB == false){
         temp_tile = BOARD[6][7];
         if (temp_tile.ISBOMB == true){
-          BOARD[7][0].setHasNum(true);
-          BOARD[7][0].numTouch++ ;
+          BOARD[7][7].setHasNum(true);
+          BOARD[7][7].numTouch++ ;
         }
         temp_tile = BOARD[6][6];
         if (temp_tile.ISBOMB == true){
-          BOARD[7][0].setHasNum(true);
-          BOARD[7][0].numTouch++ ;
+          BOARD[7][7].setHasNum(true);
+          BOARD[7][7].numTouch++ ;
         }
         temp_tile = BOARD[7][6];
         if (temp_tile.ISBOMB == true){
-          BOARD[7][0].setHasNum(true);
-          BOARD[7][0].numTouch++ ;
+          BOARD[7][7].setHasNum(true);
+          BOARD[7][7].numTouch++ ;
         }
       }
     }
