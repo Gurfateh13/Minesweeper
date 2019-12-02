@@ -215,7 +215,7 @@ public class BOARDMAKER{
           BOARD[7][0].setHasNum(true);
           BOARD[7][0].numTouch++ ;
         }
-        temp_tile = BOARD[6][1];
+        temp_tile = BOARD[7][1];
         if (temp_tile.ISBOMB == true){
           BOARD[7][0].setHasNum(true);
           BOARD[7][0].numTouch++ ;
