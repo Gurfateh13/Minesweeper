@@ -214,8 +214,28 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
      timer.cancel();
      System.out.println("CONGRATULATIONS!!! YOU WON!!!");
      correctflagsCount=0;
+     reveal();
     }
   }
+//method used to reveal all the tiles
+  public void reveal()
+  {
+    for(int i = 0; i < 8; i++)
+  {
+     for(int j = 0; j < 8; j++)
+     {
+       if(board.getTile(i,j).getHIDDEN() == true)
+       {
+         if(board.getTile(i,j).getISBOMB()== false)
+         {
+           board.getTile(i,j).setHIDDEN(false);
+           Integer temp = new Integer(board.getTile(i,j).getNumTouch());
+           buttons[i][j].setText(temp.toString());
+         }
+       }
+     }
+   } 
+  }  
 //method to implement if a bomb is left clicked  
   public void gameLost(){
     hasStarted = false;
@@ -227,6 +247,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
         }
       }
     }
+    reveal();
     System.out.println("Sorry you lost. Try Again?"); 
   }
   
