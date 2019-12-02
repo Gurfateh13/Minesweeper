@@ -74,10 +74,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
     RandomNumGen gen = new RandomNumGen(0,63,10);
     board = new BOARDMAKER("easy");
     board.makeBoard();
-    board.appointNum();
-    board.appointCornerNum();
-    board.appointEdgeNum();
-    board.divideByTwo();
+
 //this code creates an array of JButtons
     JPanel gamePan = new JPanel();    
     GridLayout layout = new GridLayout(9,9);   
@@ -202,10 +199,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
     RandomNumGen gen = new RandomNumGen(0,63,10);
     board = new BOARDMAKER("easy");
     board.makeBoard();
-    board.appointNum();
-    board.appointCornerNum();
-    board.appointEdgeNum();
-    board.divideByTwo();
+
     for(int i = 0;i<8;i++){
       for(int j= 0;j<8;j++){
         buttons[i][j].setText("");

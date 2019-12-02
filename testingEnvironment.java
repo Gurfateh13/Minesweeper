@@ -10,9 +10,9 @@ public class testingEnvironment{
     RandomNumGen gen = new RandomNumGen(0,63,10);
     BOARDMAKER board = new BOARDMAKER("easy");
     board.makeBoard();
-    board.appointNum();
-    board.appointCornerNum();
-    board.appointEdgeNum();
+    //board.appointNum();
+    //board.appointCornerNum();
+    //board.appointEdgeNum();
     System.out.print(board.toString());
     System.out.println();
     // BOARDMAKER board1 = new BOARDMAKER("medium");
