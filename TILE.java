@@ -70,7 +70,7 @@ public class TILE{
   
   //right now bombs will print that they are bombs plainly. This is just for testing. Obviously in the future
   //we probably won't even need this toString method
-  /*@Override
+  @Override
   public String toString(){
     if(FLAG){
       return "[F]";
@@ -83,8 +83,8 @@ public class TILE{
     }
     else return "[0]";
   }
-  */
   
+  /*
   //the correct toString
   @Override
   public String toString(){
@@ -103,4 +103,5 @@ public class TILE{
         return "[-]";
     }
   }
+  */
 }

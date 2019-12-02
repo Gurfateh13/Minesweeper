@@ -367,18 +367,7 @@ public class BOARDMAKER{
       }
     } 
   }
-  
-  //this divides the number in the tiles by 2 to temporarilty fix bugs
-  public void divideByTwo(){
-    for(int tileNum = 0; tileNum<BOARD.length; tileNum++){
-      for(int g=0; g< BOARD[0].length; g++){
-      if(BOARD[tileNum][g].getHasNUM() == true){
-        BOARD[tileNum][g].setNumTouch(BOARD[tileNum][g].getNumTouch()/2);
-      }
-    }
-    } 
-  }
-          
+   
   //this returns the requested tile from the board  
   public TILE getTile(int x, int y){
     return BOARD[y][x];
