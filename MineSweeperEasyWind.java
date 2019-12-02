@@ -13,9 +13,10 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
   int secondsCount = 0;
   int flagsCount = 0;
   int correctflagsCount = 0;
-  boolean hasStarted = false;
   Timer timer  = new Timer();
   JButton[][] buttons =  new JButton[8][8];
+  //these look at the status of the game and whether or not buttons can be clicked
+  boolean hasStarted = false;
   boolean gameWon = false;
   BOARDMAKER board;
   //constructor for the Easy Window 
