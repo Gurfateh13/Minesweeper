@@ -37,6 +37,9 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
               secondsCount++;
               time.setText(String.format("%03d", secondsCount));
             }
+            else{
+             gameLost(); 
+            }
           }
         }, 0L, 1000L);
         
