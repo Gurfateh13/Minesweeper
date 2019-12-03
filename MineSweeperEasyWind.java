@@ -212,9 +212,10 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
     if(correctflagsCount == 10){
      hasStarted = false;
      timer.cancel();
-     System.out.println("CONGRATULATIONS!!! YOU WON!!!");
-     correctflagsCount=0;
      reveal();
+     System.out.println("CONGRATULATIONS!!! YOU WON!!!");
+     JOptionPane.showMessageDialog(null, "Congratulations! You have won!");
+     correctflagsCount=0;
     }
   }
 //method used to reveal all the tiles
@@ -248,7 +249,8 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
       }
     }
     reveal();
-    System.out.println("Sorry you lost. Try Again?"); 
+    System.out.println("Sorry you lost. Try Again?");
+    JOptionPane.showMessageDialog(null, "Game Over.");
   }
   
   
