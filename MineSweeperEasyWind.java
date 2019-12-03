@@ -179,7 +179,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
         });
         
         
-        buttons[i][j].setPreferredSize(new Dimension(48, 48));;        
+        buttons[i][j].setPreferredSize(new Dimension(70, 70));;        
         
         buttons[i][j].setForeground(Color.RED);
         
