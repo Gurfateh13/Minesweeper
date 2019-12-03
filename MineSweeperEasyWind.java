@@ -209,7 +209,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener{
   }
 //checks if the number of correct flags is equal to the number of bombs  
   public void gameWonCheck(){
-    if(correctflagsCount == 10){
+    if(correctflagsCount == 10 && flagsCount == 10){
      hasStarted = false;
      timer.cancel();
      reveal();
