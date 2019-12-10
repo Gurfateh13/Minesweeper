@@ -66,6 +66,9 @@ public class BOARDMAKER{
       for(int i = 0; i < mines.length; i++){
         BOARD[mines[i]/36][mines[i]%36].setISBOMB(true);
       } 
+      this.appointNum();
+      this.appointCornerNum();
+      this.appointEdgeNum();
       
     }
     
@@ -81,7 +84,10 @@ public class BOARDMAKER{
       int[] mines = this.mineLocationCalc(difficulty);
       for(int i = 0; i < mines.length; i++){
         BOARD[mines[i]/16][mines[i]%16].setISBOMB(true);
-      } 
+      }
+      this.appointNum();
+      this.appointCornerNum();
+      this.appointEdgeNum();
     }
     
     else{
@@ -107,8 +113,10 @@ public class BOARDMAKER{
   
   
   public void appointNum(){
-    for (int row = 1; row < 7; row++){
-      for (int col = 1; col < 7; col++){
+    
+    if(difficulty.equals("hard")){
+      for (int row = 1; row < 15; row++){
+        for (int col = 1; col < 35; col++){
           TILE current_tile = BOARD[row][col];
           if(current_tile.ISBOMB == false){
             
@@ -129,7 +137,7 @@ public class BOARDMAKER{
               BOARD[row][col].setHasNum(true);
               BOARD[row][col].numTouch++;
             }
-
+            
             temp_tile = BOARD[row][col-1];
             if (temp_tile.ISBOMB == true){
               BOARD[row][col].setHasNum(true);
@@ -157,37 +165,314 @@ public class BOARDMAKER{
             if (temp_tile.ISBOMB == true){
               BOARD[row][col].setHasNum(true);
               BOARD[row][col].numTouch++;
+            }
+            else{ continue;}
+            
           }
-          else{ continue;}
-          
+        }
+      }
+    }
+    
+    else if(difficulty.equals("medium")){
+      for (int row = 1; row < 15; row++){
+        for (int col = 1; col < 15; col++){
+          TILE current_tile = BOARD[row][col];
+          if(current_tile.ISBOMB == false){
+            
+            TILE temp_tile = BOARD[row-1][col-1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++ ;
+            }
+            
+            temp_tile = BOARD[row-1][col];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++ ;
+            }
+            
+            temp_tile = BOARD[row-1][col+1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            
+            temp_tile = BOARD[row][col-1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            
+            temp_tile = BOARD[row][col+1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            
+            temp_tile = BOARD[row+1][col-1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            temp_tile = BOARD[row+1][col];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            
+            temp_tile = BOARD[row+1][col+1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            else{ continue;}
+            
           }
+        }
+      }
+    }
+    else{
+      for (int row = 1; row < 7; row++){
+        for (int col = 1; col < 7; col++){
+          TILE current_tile = BOARD[row][col];
+          if(current_tile.ISBOMB == false){
+            
+            TILE temp_tile = BOARD[row-1][col-1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++ ;
+            }
+            
+            temp_tile = BOARD[row-1][col];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++ ;
+            }
+            
+            temp_tile = BOARD[row-1][col+1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            
+            temp_tile = BOARD[row][col-1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            
+            temp_tile = BOARD[row][col+1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            
+            temp_tile = BOARD[row+1][col-1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            temp_tile = BOARD[row+1][col];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            
+            temp_tile = BOARD[row+1][col+1];
+            if (temp_tile.ISBOMB == true){
+              BOARD[row][col].setHasNum(true);
+              BOARD[row][col].numTouch++;
+            }
+            else{ continue;}
+            
+          }
+        }
       }
     }
   }
   
   public void appointCornerNum(){
-    TILE first_corner_tile = BOARD[0][0];
-    if(first_corner_tile.ISBOMB == false){
-      TILE temp_tile = BOARD[0][1];
-      if (temp_tile.ISBOMB == true){
-        BOARD[0][0].setHasNum(true);
-        BOARD[0][0].numTouch++ ;
+    if(difficulty.equals("hard")){
+      TILE first_corner_tile = BOARD[0][0];
+      if(first_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[0][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+          BOARD[0][0].numTouch++ ;
+        }
+        temp_tile = BOARD[1][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+          BOARD[0][0].numTouch++ ;
+        }
+        temp_tile = BOARD[1][0];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+          BOARD[0][0].numTouch++ ;
+        }
       }
-      temp_tile = BOARD[1][1];
-      if (temp_tile.ISBOMB == true){
-        BOARD[0][0].setHasNum(true);
-        BOARD[0][0].numTouch++ ;
+        
+        
+      TILE second_corner_tile = BOARD[0][35];
+      if(second_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[0][34];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][35].setHasNum(true);
+          BOARD[0][35].numTouch++ ;
+        }
+        temp_tile = BOARD[1][34];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][35].setHasNum(true);
+          BOARD[0][35].numTouch++ ;
+        }
+        temp_tile = BOARD[1][35];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][35].setHasNum(true);
+          BOARD[0][35].numTouch++ ;
+        }
       }
-      temp_tile = BOARD[1][0];
-      if (temp_tile.ISBOMB == true){
-        BOARD[0][0].setHasNum(true);
-        BOARD[0][0].numTouch++ ;
+      TILE third_corner_tile = BOARD[15][0];
+      if(third_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[14][0];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][0].setHasNum(true);
+          BOARD[15][0].numTouch++ ;
+        }
+        temp_tile = BOARD[14][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][0].setHasNum(true);
+          BOARD[15][0].numTouch++ ;
+        }
+        temp_tile = BOARD[15][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][0].setHasNum(true);
+          BOARD[15][0].numTouch++ ;
+        }
       }
       
+      TILE fourth_corner_tile = BOARD[15][35];
+      if(fourth_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[14][35];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][35].setHasNum(true);
+          BOARD[15][35].numTouch++ ;
+        }
+        temp_tile = BOARD[14][34];
+        if (temp_tile.ISBOMB == true){
+          BOARD[7][7].setHasNum(true);
+          BOARD[7][7].numTouch++ ;
+        }
+        temp_tile = BOARD[15][34];
+        if (temp_tile.ISBOMB == true){
+          BOARD[7][7].setHasNum(true);
+          BOARD[7][7].numTouch++ ;
+        }
+      }
+    }
+    
+    else if(difficulty.equals("medium")){
+      TILE first_corner_tile = BOARD[0][0];
+      if(first_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[0][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+        BOARD[0][0].numTouch++ ;
+        }
+        temp_tile = BOARD[1][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+          BOARD[0][0].numTouch++ ;
+        }
+        temp_tile = BOARD[1][0];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+          BOARD[0][0].numTouch++ ;
+        }
+      }
+        
+        
+      TILE second_corner_tile = BOARD[0][15];
+      if(second_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[0][14];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][15].setHasNum(true);
+          BOARD[0][15].numTouch++ ;
+        }
+        temp_tile = BOARD[1][14];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][15].setHasNum(true);
+          BOARD[0][15].numTouch++ ;
+        }
+        temp_tile = BOARD[1][15];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][15].setHasNum(true);
+          BOARD[0][15].numTouch++ ;
+        }
+      }
+      TILE third_corner_tile = BOARD[15][0];
+      if(third_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[14][0];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][0].setHasNum(true);
+          BOARD[15][0].numTouch++ ;
+        }
+        temp_tile = BOARD[14][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][0].setHasNum(true);
+          BOARD[15][0].numTouch++ ;
+        }
+        temp_tile = BOARD[15][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][0].setHasNum(true);
+          BOARD[15][0].numTouch++ ;
+        }
+      }
       
+      TILE fourth_corner_tile = BOARD[15][15];
+      if(fourth_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[14][15];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][15].setHasNum(true);
+          BOARD[15][15].numTouch++ ;
+        }
+        temp_tile = BOARD[14][14];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][15].setHasNum(true);
+          BOARD[15][15].numTouch++ ;
+        }
+        temp_tile = BOARD[15][14];
+        if (temp_tile.ISBOMB == true){
+          BOARD[15][15].setHasNum(true);
+          BOARD[15][15].numTouch++ ;
+        }
+      }
+    }
+    
+    
+    else{
+      TILE first_corner_tile = BOARD[0][0];
+      if(first_corner_tile.ISBOMB == false){
+        TILE temp_tile = BOARD[0][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+        BOARD[0][0].numTouch++ ;
+        }
+        temp_tile = BOARD[1][1];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+          BOARD[0][0].numTouch++ ;
+        }
+        temp_tile = BOARD[1][0];
+        if (temp_tile.ISBOMB == true){
+          BOARD[0][0].setHasNum(true);
+          BOARD[0][0].numTouch++ ;
+        }
+      }
+        
+        
       TILE second_corner_tile = BOARD[0][7];
       if(second_corner_tile.ISBOMB == false){
-        temp_tile = BOARD[0][6];
+        TILE temp_tile = BOARD[0][6];
         if (temp_tile.ISBOMB == true){
           BOARD[0][7].setHasNum(true);
           BOARD[0][7].numTouch++ ;
@@ -205,7 +490,7 @@ public class BOARDMAKER{
       }
       TILE third_corner_tile = BOARD[7][0];
       if(third_corner_tile.ISBOMB == false){
-        temp_tile = BOARD[6][0];
+        TILE temp_tile = BOARD[6][0];
         if (temp_tile.ISBOMB == true){
           BOARD[7][0].setHasNum(true);
           BOARD[7][0].numTouch++ ;
@@ -224,7 +509,7 @@ public class BOARDMAKER{
       
       TILE fourth_corner_tile = BOARD[7][7];
       if(fourth_corner_tile.ISBOMB == false){
-        temp_tile = BOARD[6][7];
+        TILE temp_tile = BOARD[6][7];
         if (temp_tile.ISBOMB == true){
           BOARD[7][7].setHasNum(true);
           BOARD[7][7].numTouch++ ;
@@ -244,130 +529,384 @@ public class BOARDMAKER{
   }
   
   public void appointEdgeNum(){
-    for (int col = 1; col <7; col++){
-      TILE current_tile = BOARD[0][col];
-      if(current_tile.ISBOMB == false){
-        TILE temp_tile = BOARD[0][col-1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[0][col].setHasNum(true);
-          BOARD[0][col].numTouch++ ;
+    if(difficulty.equals("hard")){
+      for (int col = 1; col <34; col++){
+        TILE current_tile = BOARD[0][col];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[0][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
         }
-        temp_tile = BOARD[0][col+1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[0][col].setHasNum(true);
-          BOARD[0][col].numTouch++ ;
-        }
-        temp_tile = BOARD[1][col-1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[0][col].setHasNum(true);
-          BOARD[0][col].numTouch++ ;
-        }
-        temp_tile = BOARD[1][col];
-        if (temp_tile.ISBOMB == true){
-          BOARD[0][col].setHasNum(true);
-          BOARD[0][col].numTouch++ ;
-        }
-        temp_tile = BOARD[1][col+1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[0][col].setHasNum(true);
-          BOARD[0][col].numTouch++ ;
-        }
-      }
-    }
-    for (int col = 1; col <7; col++){
-      TILE current_tile = BOARD[7][col];
-      if(current_tile.ISBOMB == false){
-        TILE temp_tile = BOARD[7][col-1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[7][col].setHasNum(true);
-          BOARD[7][col].numTouch++ ;
-        }
-        temp_tile = BOARD[7][col+1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[7][col].setHasNum(true);
-          BOARD[7][col].numTouch++ ;
-        }
-        temp_tile = BOARD[6][col-1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[7][col].setHasNum(true);
-          BOARD[7][col].numTouch++ ;
-        }
-        temp_tile = BOARD[6][col];
-        if (temp_tile.ISBOMB == true){
-          BOARD[7][col].setHasNum(true);
-          BOARD[7][col].numTouch++ ;
-        }
-        temp_tile = BOARD[6][col+1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[7][col].setHasNum(true);
-          BOARD[7][col].numTouch++ ;
+          temp_tile = BOARD[0][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
         }
       }
+      for (int col = 1; col <34; col++){
+        TILE current_tile = BOARD[15][col];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[15][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+          temp_tile = BOARD[15][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+          temp_tile = BOARD[14][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[7][col].setHasNum(true);
+            BOARD[7][col].numTouch++ ;
+          }
+          temp_tile = BOARD[14][col];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+          temp_tile = BOARD[14][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+        }
+      }
+      
+      
+      for (int row = 1; row <15; row++){
+        TILE current_tile = BOARD[row][0];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[row-1][0];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][0];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row-1][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+        }
+      }
+      
+      for (int row = 1; row <15; row++){
+        TILE current_tile = BOARD[row][35];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[row-1][35];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][35].setHasNum(true);
+            BOARD[row][35].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][35];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][35].setHasNum(true);
+            BOARD[row][35].numTouch++ ;
+          }
+          temp_tile = BOARD[row-1][34];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][35].setHasNum(true);
+            BOARD[row][35].numTouch++ ;
+          }
+          temp_tile = BOARD[row][34];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][35].setHasNum(true);
+            BOARD[row][35].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][34];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][35].setHasNum(true);
+            BOARD[row][35].numTouch++ ;
+          }
+        }
+      } 
     }
     
-    for (int row = 1; row <7; row++){
-      TILE current_tile = BOARD[row][0];
-      if(current_tile.ISBOMB == false){
-        TILE temp_tile = BOARD[row-1][0];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][0].setHasNum(true);
-          BOARD[row][0].numTouch++ ;
+    else if(difficulty.equals("medium")){
+      for (int col = 1; col <15; col++){
+        TILE current_tile = BOARD[0][col];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[0][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
         }
-        temp_tile = BOARD[row+1][0];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][0].setHasNum(true);
-          BOARD[row][0].numTouch++ ;
-        }
-        temp_tile = BOARD[row-1][1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][0].setHasNum(true);
-          BOARD[row][0].numTouch++ ;
-        }
-        temp_tile = BOARD[row][1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][0].setHasNum(true);
-          BOARD[row][0].numTouch++ ;
-        }
-        temp_tile = BOARD[row+1][1];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][0].setHasNum(true);
-          BOARD[row][0].numTouch++ ;
+          temp_tile = BOARD[0][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
         }
       }
+      for (int col = 1; col <15; col++){
+        TILE current_tile = BOARD[15][col];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[15][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+          temp_tile = BOARD[15][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+          temp_tile = BOARD[14][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+          temp_tile = BOARD[14][col];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+          temp_tile = BOARD[14][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[15][col].setHasNum(true);
+            BOARD[15][col].numTouch++ ;
+          }
+        }
+      }
+      
+      for (int row = 1; row <15; row++){
+        TILE current_tile = BOARD[row][0];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[row-1][0];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][0];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row-1][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+        }
+      }
+      
+      for (int row = 1; row <15; row++){
+        TILE current_tile = BOARD[row][15];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[row-1][15];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][15].setHasNum(true);
+            BOARD[row][15].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][15];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][15].setHasNum(true);
+            BOARD[row][15].numTouch++ ;
+          }
+          temp_tile = BOARD[row-1][14];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][15].setHasNum(true);
+            BOARD[row][15].numTouch++ ;
+          }
+          temp_tile = BOARD[row][14];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][15].setHasNum(true);
+            BOARD[row][15].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][14];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][15].setHasNum(true);
+            BOARD[row][15].numTouch++ ;
+          }
+        }
+      } 
     }
-    
-    for (int row = 1; row <7; row++){
-      TILE current_tile = BOARD[row][7];
-      if(current_tile.ISBOMB == false){
-        TILE temp_tile = BOARD[row-1][7];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][7].setHasNum(true);
-          BOARD[row][7].numTouch++ ;
+
+    else{
+      for (int col = 1; col <7; col++){
+        TILE current_tile = BOARD[0][col];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[0][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
         }
-        temp_tile = BOARD[row+1][7];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][7].setHasNum(true);
-          BOARD[row][7].numTouch++ ;
-        }
-        temp_tile = BOARD[row-1][6];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][7].setHasNum(true);
-          BOARD[row][7].numTouch++ ;
-        }
-        temp_tile = BOARD[row][6];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][7].setHasNum(true);
-          BOARD[row][7].numTouch++ ;
-        }
-        temp_tile = BOARD[row+1][6];
-        if (temp_tile.ISBOMB == true){
-          BOARD[row][7].setHasNum(true);
-          BOARD[row][7].numTouch++ ;
+          temp_tile = BOARD[0][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
+          temp_tile = BOARD[1][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[0][col].setHasNum(true);
+            BOARD[0][col].numTouch++ ;
+          }
         }
       }
-    } 
+      for (int col = 1; col <7; col++){
+        TILE current_tile = BOARD[7][col];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[7][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[7][col].setHasNum(true);
+            BOARD[7][col].numTouch++ ;
+          }
+          temp_tile = BOARD[7][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[7][col].setHasNum(true);
+            BOARD[7][col].numTouch++ ;
+          }
+          temp_tile = BOARD[6][col-1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[7][col].setHasNum(true);
+            BOARD[7][col].numTouch++ ;
+          }
+          temp_tile = BOARD[6][col];
+          if (temp_tile.ISBOMB == true){
+            BOARD[7][col].setHasNum(true);
+            BOARD[7][col].numTouch++ ;
+          }
+          temp_tile = BOARD[6][col+1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[7][col].setHasNum(true);
+            BOARD[7][col].numTouch++ ;
+          }
+        }
+      }
+      
+      for (int row = 1; row <7; row++){
+        TILE current_tile = BOARD[row][0];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[row-1][0];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][0];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row-1][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][1];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][0].setHasNum(true);
+            BOARD[row][0].numTouch++ ;
+          }
+        }
+      }
+      
+      for (int row = 1; row <7; row++){
+        TILE current_tile = BOARD[row][7];
+        if(current_tile.ISBOMB == false){
+          TILE temp_tile = BOARD[row-1][7];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][7].setHasNum(true);
+            BOARD[row][7].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][7];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][7].setHasNum(true);
+            BOARD[row][7].numTouch++ ;
+          }
+          temp_tile = BOARD[row-1][6];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][7].setHasNum(true);
+            BOARD[row][7].numTouch++ ;
+          }
+          temp_tile = BOARD[row][6];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][7].setHasNum(true);
+            BOARD[row][7].numTouch++ ;
+          }
+          temp_tile = BOARD[row+1][6];
+          if (temp_tile.ISBOMB == true){
+            BOARD[row][7].setHasNum(true);
+            BOARD[row][7].numTouch++ ;
+          }
+        }
+      } 
+    }
   }
-   
+  
+    
   //this returns the requested tile from the board  
   public TILE getTile(int x, int y){
     return BOARD[y][x];

@@ -8,20 +8,18 @@ public class testingEnvironment{
   public static void main(String[] args){
     
     RandomNumGen gen = new RandomNumGen(0,63,10);
-    BOARDMAKER board = new BOARDMAKER("easy");
-    board.makeBoard();
-    //board.appointNum();
-    //board.appointCornerNum();
-    //board.appointEdgeNum();
-    System.out.print(board.toString());
+    //BOARDMAKER board = new BOARDMAKER("easy");
+    //board.makeBoard();
+    //System.out.print(board.toString());
+    //System.out.println();
+    BOARDMAKER board1 = new BOARDMAKER("medium");
+    board1.makeBoard();
+    System.out.print(board1.toString());
     System.out.println();
-    // BOARDMAKER board1 = new BOARDMAKER("medium");
-    //board1.makeBoard();
-    //System.out.print(board1.toString());
-    //for some reason hard implementation isn't working right now. I'll look into it later
     //BOARDMAKER board2 = new BOARDMAKER("hard");
-    // board2.makeBoard();
+    //board2.makeBoard();
     //System.out.print(board2.toString());
+    //System.out.println();
     
   }
 }
