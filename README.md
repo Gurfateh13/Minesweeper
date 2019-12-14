@@ -1,2 +1,0 @@
-# Minesweeper
-CS 211 FINAL PROJECT
