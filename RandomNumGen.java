@@ -5,11 +5,6 @@
   * shuffles and loads the first n(num mines) into an array representing the location of the mines.
   * Right now it's best used by putting the array object returned by numGen() into what variable you want
   * */
-
-
-
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 

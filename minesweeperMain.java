@@ -26,16 +26,16 @@ public class minesweeperMain{
       System.out.println("Now press 'c' to click 'r' to right click 'q' to quit\n\n");
       choice = scnr.next();
       if(choice.equals("c")){
-        System.out.println("Okay, now enter the coordinates of your clicks x value first then y value!");
+        System.out.println("Okay, now enter the coordinates of your clicks y value first then x value!");
         int xcoord = scnr.nextInt();
         int ycoord = scnr.nextInt();
-        board.leftClick(xcoord,ycoord);
+        board.leftClick(ycoord,xcoord);
       }
       else if(choice.equals("r")){
-        System.out.println("Okay, now enter the coordinates of your right clicks x value first then y value!");
+        System.out.println("Okay, now enter the coordinates of your right clicks y value first then x value!");
         int xcoord = scnr.nextInt();
         int ycoord = scnr.nextInt();
-        board.rightClick(xcoord,ycoord);
+        board.rightClick(ycoord,xcoord);
       }
       else
       {
