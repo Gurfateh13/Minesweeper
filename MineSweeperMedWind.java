@@ -17,6 +17,7 @@ public class MineSweeperMedWind extends JFrame implements ActionListener, MineSw
   int correctflagsCount = 0;
   Timer timer  = new Timer();
   String name;
+  int endScore;
   //values for size and number of flags needed to win
   int HEIGHT = 16;
   int WIDTH = 16;
@@ -84,6 +85,7 @@ public class MineSweeperMedWind extends JFrame implements ActionListener, MineSw
         score.setText(String.format("%03d", 0));
         correctflagsCount = 0;
         flagsCount = 0;
+        endScore = 0;
       }
     });
     add(resetBt);
@@ -235,6 +237,7 @@ public class MineSweeperMedWind extends JFrame implements ActionListener, MineSw
      hasStarted = false;
      timer.cancel();
      reveal();
+     endScore = secondsCount;
          //do something here with
     /*
      * name 
@@ -277,6 +280,7 @@ public class MineSweeperMedWind extends JFrame implements ActionListener, MineSw
         }
       }
     }
+    endScore = secondsCount;
     reveal();
     //do something here with
     /*
