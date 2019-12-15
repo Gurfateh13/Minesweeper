@@ -294,6 +294,3 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
   @Override
   public void actionPerformed(ActionEvent e){}    
 }
-
-
-
