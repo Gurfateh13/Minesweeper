@@ -1,17 +1,19 @@
+//imports the required packages
 import javax.swing.*;
 import java.awt.*;
 import java.lang.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.*;
-
+//MineSweeperEasyWind is a child class of JFrame that implements ActionListener, MineSweeperGUI
 public class MineSweeperEasyWind extends JFrame implements ActionListener, MineSweeperGUI{
-
+//variables that appear on the gui
   JLabel score;
   JLabel time;
   JButton startBt;
   JButton resetBt;
   JTextField nameText = new JTextField(20);
+  //variables to track the score
   int secondsCount = 0;
   int flagsCount = 0;
   int correctflagsCount = 0;
@@ -210,7 +212,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
       }      
     }
     
-
+//adds the array of buttons to the panel
     this.getContentPane().add(gamePan);    
     this.getContentPane().setBackground(Color.GRAY);
     
