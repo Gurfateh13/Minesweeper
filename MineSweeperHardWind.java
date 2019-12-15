@@ -5,29 +5,27 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.*;
 
-public class MineSweeperEasyWind extends JFrame implements ActionListener, MineSweeperGUI{
+public class MineSweeperHardWind extends JFrame implements ActionListener, MineSweeperGUI{
 
   JLabel score;
   JLabel time;
   JButton startBt;
   JButton resetBt;
-  JTextField nameText = new JTextField(20);
   int secondsCount = 0;
   int flagsCount = 0;
   int correctflagsCount = 0;
   Timer timer  = new Timer();
-  String name;
   //values for size and number of flags needed to win
-  int HEIGHT = 8;
-  int WIDTH = 8;
-  int NUMFLAGSNEEDED = 10;
+  int HEIGHT = 16;
+  int WIDTH = 36;
+  int NUMFLAGSNEEDED = 99;
   JButton[][] buttons =  new JButton[HEIGHT][WIDTH];
   //these look at the status of the game and whether or not buttons can be clicked
   boolean hasStarted = false;
   boolean gameWon = false;
   BOARDMAKER board;
   //constructor for the Easy Window 
-  public MineSweeperEasyWind() {
+  public MineSweeperHardWind() {
     //HEIGHT = height;
     //WIDTH = width;
     //NUMFLAGSNEEDED = numBombs;
@@ -41,6 +39,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
       @Override
       public void actionPerformed(ActionEvent e){
         hasStarted = true;
+        //reveal();
         timer.schedule(new TimerTask() {
           @Override public void run() {
             if(secondsCount<999){
@@ -58,14 +57,6 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
     });
     add(startBt);
     
-//saves the name to a string   
-    nameText.addActionListener(new ActionListener(){
-      @Override
-      public void actionPerformed(ActionEvent e){
-        name = nameText.getText();
-      }
-    });
-    add(nameText);
 //code for reset button    
     resetBt = new JButton("Reset");
     resetBt.addActionListener(new ActionListener(){
@@ -93,12 +84,12 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
     
 //this segment of code generates a BOARDMAKER object to draw values from    
     //RandomNumGen gen = new RandomNumGen(0,63,10);
-    board = new BOARDMAKER("easy");
+    board = new BOARDMAKER("hard");
     board.makeBoard();
 
 //this code creates an array of JButtons
     JPanel gamePan = new JPanel();    
-    GridLayout layout = new GridLayout(HEIGHT+1,WIDTH+1);   
+    GridLayout layout = new GridLayout(HEIGHT,WIDTH);   
     layout.setHgap(0);
     layout.setVgap(0);    
     gamePan.setLayout(layout);
@@ -130,7 +121,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
                 for(int j=0; j<WIDTH; j++){
 //code for if the tile is a bomb and is left clicked
                   if(e.getSource() == buttons[i][j] && board.getTile(i,j).getISBOMB()== true && buttons[i][j].getText().equals("")){
-                    buttons[i][j].setText("BOMB");
+                    buttons[i][j].setText("B");
                     gameLost();
                   }
 //code for if the tile has a number and is left clicked
@@ -169,11 +160,11 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
                   if(e.getSource() == buttons[i][j] && board.getTile(i,j).getISBOMB()== true && buttons[i][j].getText().equals("")){
                     flagsCount++;
                     correctflagsCount++;
-                    buttons[i][j].setText("FLAG");
+                    buttons[i][j].setText("F");
                     
                   }
 //code for if the tile is a bomb and is unflagged                  
-                  else if(e.getSource() == buttons[i][j] && board.getTile(i,j).getISBOMB()== true && buttons[i][j].getText().equals("FLAG")){
+                  else if(e.getSource() == buttons[i][j] && board.getTile(i,j).getISBOMB()== true && buttons[i][j].getText().equals("F")){
                     flagsCount--;
                     correctflagsCount--;
                     buttons[i][j].setText("");
@@ -182,10 +173,10 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
 //code for if the tile isn't a bomb and is flagged                   
                   else if (e.getSource() == buttons[i][j] && board.getTile(i,j).getISBOMB()!= true && buttons[i][j].getText().equals("")){
                     flagsCount++;
-                    buttons[i][j].setText("FLAG");
+                    buttons[i][j].setText("F");
                   }
 //code for if the tile isn't a bomb and is unflagged                  
-                  else if (e.getSource() == buttons[i][j] && board.getTile(i,j).getISBOMB()!= true && buttons[i][j].getText().equals("FLAG")){
+                  else if (e.getSource() == buttons[i][j] && board.getTile(i,j).getISBOMB()!= true && buttons[i][j].getText().equals("F")){
                     flagsCount--;
                     buttons[i][j].setText("");
                   }
@@ -200,7 +191,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
         });
         
         
-        buttons[i][j].setPreferredSize(new Dimension(70, 70));;        
+        buttons[i][j].setPreferredSize(new Dimension(30, 30));;        
         
         buttons[i][j].setForeground(Color.RED);
         
@@ -215,11 +206,11 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
     this.getContentPane().setBackground(Color.GRAY);
     
   }
-//reset method that resets the board
+//reset method that resets the board 
   @Override
   public void resetBoard(){
     //RandomNumGen gen = new RandomNumGen(0,63,10);
-    board = new BOARDMAKER("easy");
+    board = new BOARDMAKER("hard");
     board.makeBoard();
 
     for(int i = 0;i<HEIGHT;i++){
@@ -235,13 +226,6 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
      hasStarted = false;
      timer.cancel();
      reveal();
-         //do something here with
-    /*
-     * name 
-     * secondsCount
-     * 
-     * name is the name of the player and secondsCount is the score. Save this to a leaderboard
-     */
      System.out.println("CONGRATULATIONS!!! YOU WON!!!");
      JOptionPane.showMessageDialog(null, "Congratulations! You have won!");
      correctflagsCount=0;
@@ -273,18 +257,11 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
     for(int k=0; k<HEIGHT; k++){
       for(int h=0; h<WIDTH; h++){
         if(board.getTile(k,h).getISBOMB()== true){
-          buttons[k][h].setText("BOMB");
+          buttons[k][h].setText("B");
         }
       }
     }
     reveal();
-    //do something here with
-    /*
-     * name 
-     * secondsCount
-     * 
-     * name is the name of the player and secondsCount is the score. Save this to a leaderboard
-     */
     System.out.println("Sorry you lost. Try Again?");
     JOptionPane.showMessageDialog(null, "Game Over.");
   }
@@ -294,6 +271,3 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
   @Override
   public void actionPerformed(ActionEvent e){}    
 }
-
-
-
