@@ -1,17 +1,19 @@
+//adds the necessary packages
 import javax.swing.*;
 import java.awt.*;
 import java.lang.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.event.*;
-
+//MineSweeperMedWind is a JFrame that implements ActionListener and MineSweeperGUI
 public class MineSweeperMedWind extends JFrame implements ActionListener, MineSweeperGUI{
-
+//variables for the gui elements
   JLabel score;
   JLabel time;
   JButton startBt;
   JButton resetBt;
   JTextField nameText = new JTextField(20);
+  //variables to track the score
   int secondsCount = 0;
   int flagsCount = 0;
   int correctflagsCount = 0;
@@ -212,7 +214,7 @@ public class MineSweeperMedWind extends JFrame implements ActionListener, MineSw
       }      
     }
     
-
+//adds the array of buttons to the panel
     this.getContentPane().add(gamePan);    
     this.getContentPane().setBackground(Color.GRAY);
     
