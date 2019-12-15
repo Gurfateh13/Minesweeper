@@ -359,13 +359,13 @@ public class BOARDMAKER{
         }
         temp_tile = BOARD[14][34];
         if (temp_tile.ISBOMB == true){
-          BOARD[7][7].setHasNum(true);
-          BOARD[7][7].numTouch++ ;
+          BOARD[15][35].setHasNum(true);
+          BOARD[15][35].numTouch++ ;
         }
         temp_tile = BOARD[15][34];
         if (temp_tile.ISBOMB == true){
-          BOARD[7][7].setHasNum(true);
-          BOARD[7][7].numTouch++ ;
+          BOARD[15][35].setHasNum(true);
+          BOARD[15][35].numTouch++ ;
         }
       }
     }
