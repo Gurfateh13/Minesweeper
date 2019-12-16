@@ -34,21 +34,21 @@ public class highScores{
     }
   }
   
-  public void createHighScores(){
+  public static void createHighScores(String name, String score){
     try
       {
-         // i don't know how to get the file location to be consistent here. You have to manually change it for your file system?
-         FileWriter writer = new FileWriter("C:/Users/Sand/Desktop/SWEEP/highscores.txt");
-         // score from the timer goes in the variable below
-         String score = "we have to put the score from the timer here";
-         writer.write(score);
-         writer.close();
+        File textFile = new File("highscores.txt");
+        String absPath = textFile.getAbsolutePath();
+        // Used to retrieve and store the absolute pathname of the highscores.txt file.
+        FileWriter writer = new FileWriter(absPath);
+        writer.write(score + " " + name + "\n");
+        writer.close();
       }
-      catch (Exception e)
-      {
-        System.out.println("Something went wrong");
-        return;
-      }
+     catch (Exception e)
+     {
+      System.out.println("Something went wrong");
+      return;
+     }
   
   }
 }
