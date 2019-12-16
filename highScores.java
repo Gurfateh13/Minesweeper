@@ -29,7 +29,7 @@ public class highScores{
       }
     }
     else{
-      createHighScores();
+      //createHighScores();
       return null;
     }
   }
