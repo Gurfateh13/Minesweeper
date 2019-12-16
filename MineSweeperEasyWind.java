@@ -237,13 +237,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
      hasStarted = false;
      timer.cancel();
      reveal();
-         //do something here with
-    /*
-     * name 
-     * secondsCount
-     * 
-     * name is the name of the player and secondsCount is the score. Save this to a leaderboard
-     */
+     highScores.createHighScores(name, secondsCount);
      System.out.println("CONGRATULATIONS!!! YOU WON!!!");
      JOptionPane.showMessageDialog(null, "Congratulations! You have won!");
      correctflagsCount=0;
@@ -280,13 +274,7 @@ public class MineSweeperEasyWind extends JFrame implements ActionListener, MineS
       }
     }
     reveal();
-    //do something here with
-    /*
-     * name 
-     * secondsCount
-     * 
-     * name is the name of the player and secondsCount is the score. Save this to a leaderboard
-     */
+    highScores.createHighScores(name, secondsCount);
     System.out.println("Sorry you lost. Try Again?");
     JOptionPane.showMessageDialog(null, "Game Over.");
   }
