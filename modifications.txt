@@ -5,4 +5,4 @@ We also added a gui that lets the player pick a difficulty. The difficulty
 levels that work are easy and medium. We tried to add a hard difficulty but
 encountered problems with the array being out of bounds somewhere in the 
 Boardmaker class. We also tried to add a leaderboard but couldn't properly 
-figure out how to connect it to the gui.
+figure out how to connect it to the gui. To play the game, run MineSweeperWindow.java
